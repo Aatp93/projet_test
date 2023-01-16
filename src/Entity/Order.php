@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Entity;
-
+use App\Entity\Coupon;
+use App\Entity\User;
 use App\Repository\OrderRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -23,11 +24,11 @@ class Order
     private ?\DateTimeImmutable $created_at = null;
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
-    private ?coupon $coupon = null;
+    private ?Coupon $coupon = null;
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $user = null;
+    private ?User $user = null;
 
     #[ORM\OneToMany(mappedBy: 'orders', targetEntity: OrderDetail::class, orphanRemoval: true)]
     private Collection $orderDetails;
@@ -66,24 +67,24 @@ class Order
         return $this;
     }
 
-    public function getCoupon(): ?coupon
+    public function getCoupon(): ?Coupon
     {
         return $this->coupon;
     }
 
-    public function setCoupon(?coupon $coupon): self
+    public function setCoupon(?Coupon $coupon): self
     {
         $this->coupon = $coupon;
 
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?user $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 

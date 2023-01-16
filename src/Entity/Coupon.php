@@ -39,7 +39,7 @@ class Coupon
 
     #[ORM\ManyToOne(inversedBy: 'coupons')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?couponType $coupon_type = null;
+    private ?CouponType $coupon_type = null;
 
     #[ORM\OneToMany(mappedBy: 'coupon', targetEntity: Order::class)]
     private Collection $orders;
@@ -138,12 +138,12 @@ class Coupon
         return $this;
     }
 
-    public function getCouponType(): ?couponType
+    public function getCouponType(): ?CouponType
     {
         return $this->coupon_type;
     }
 
-    public function setCouponType(?couponType $coupon_type): self
+    public function setCouponType(?CouponType $coupon_type): self
     {
         $this->coupon_type = $coupon_type;
 

@@ -17,12 +17,12 @@ class OrderDetail
     #[ORM\Id]
     #[ORM\ManyToOne(inversedBy: 'orderDetails')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?order $orders = null;
+    private ?Order $orders = null;
 
     #[ORM\Id]
     #[ORM\ManyToOne(inversedBy: 'orderDetails')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?product $products = null;
+    private ?Product $products = null;
 
    
 
@@ -50,24 +50,24 @@ class OrderDetail
         return $this;
     }
 
-    public function getOrders(): ?order
+    public function getOrders(): ?Order
     {
         return $this->orders;
     }
 
-    public function setOrders(?order $orders): self
+    public function setOrders(?Order $orders): self
     {
         $this->orders = $orders;
 
         return $this;
     }
 
-    public function getProducts(): ?product
+    public function getProducts(): ?Product
     {
         return $this->products;
     }
 
-    public function setProducts(?product $products): self
+    public function setProducts(?Product $products): self
     {
         $this->products = $products;
 
