@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use App\Entity\Trait\SlugTrait;
 use App\Repository\ProductRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -10,7 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
-{
+{ 
+    use SlugTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -37,6 +41,7 @@ class Product
     public function __construct()
     {
         $this->orderDetails = new ArrayCollection();
+        $this->created_at = new DateTimeImmutable();
     }
 
     public function getId(): ?int
