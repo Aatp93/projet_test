@@ -164,7 +164,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->zipcode;
     }
 
-    public function setZipcode(int $zipcode): self
+    public function setZipcode(string $zipcode): self
     {
         $this->zipcode = $zipcode;
 
