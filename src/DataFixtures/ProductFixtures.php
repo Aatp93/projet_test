@@ -9,7 +9,9 @@ use Faker;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 class ProductFixtures extends Fixture
-{
+{   
+    private int $counter = 1; 
+
     public function __construct(private SluggerInterface $slugger)
     {
     }
@@ -18,11 +20,9 @@ class ProductFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
 
-
-
         $faker = Faker\Factory::create('fr_FR');
 
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
 
 
             $product = new Product();
@@ -35,6 +35,10 @@ class ProductFixtures extends Fixture
             $category = $this->getReference('cat-' . rand(1, 5));
             //$product->setCategorie($category);
             $manager->persist($product);
+
+            $this->addReference('prod-'. $this->counter, $product);
+            $this->counter++; 
+
         }
         $manager->flush();
     }
