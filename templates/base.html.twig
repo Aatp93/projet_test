@@ -39,25 +39,8 @@
 								Test
 							</a>
 						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								Dropdown
-							</a>
-							<ul class="dropdown-menu">
-								<li>
-									<a class="dropdown-item" href="#">Action</a>
-								</li>
-								<li>
-									<a class="dropdown-item" href="#">Another action</a>
-								</li>
-								<li><hr class="dropdown-divider"></li>
-								<li>
-									<a class="dropdown-item" href="#">Something else here</a>
-								</li>
-							</ul>
-						</li>
 						<li class="nav-item">
-							<a class="nav-link disabled">Disabled</a>
+							<a class="nav-link" href="{{ path('app_mail')}}">Envoi mail </a>
 						</li>
 					</ul>
 					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -81,6 +64,14 @@
 				</div>
 			</div>
 		</nav>
+		{# {% if app.user and app.user.isVerified == false %}
+	<div class="alert alert-warning alert-dismissible" role="alert">
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		<div class="alert-message">
+			<strong>Votre compte n'est pas activé</strong>, <a href="#">renvoyer le lien d'activation</a>
+		</div>
+	</div>
+{% endif %} #}
 		{% block body %}{% endblock %}
 		<footer></footer>
 
